@@ -121,7 +121,7 @@ $conn = Connect();
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading" style="color: black">Car Rentals</h1>
+                            <h1 class="brand-heading" style="color: black">Car Rental System</h1>
                             <p class="intro-text">
                                 Online Car Rental Service
                             </p>
@@ -185,7 +185,6 @@ $conn = Connect();
 
     
     <!-- Container (Contact Section) -->
-    <!-- -->
     <footer class="site-footer">
         <div class="container">
             <hr>

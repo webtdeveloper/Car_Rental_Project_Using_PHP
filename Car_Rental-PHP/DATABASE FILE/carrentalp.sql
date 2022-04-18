@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `rentedcars` (
 -- Dumping data for table `rentedcars`
 
 INSERT INTO `rentedcars` (`id`, `customer_username`, `car_id`, `driver_id`, `booking_date`, `rent_start_date`, `rent_end_date`, `car_return_date`, `fare`, `charge_type`, `distance`, `no_of_days`, `total_amount`, `return_status`) VALUES
-(574681245, 'ethan', 4, 2, '2018-07-18', '2018-07-01', '2018-07-02', '2018-07-18', 11, 'km', 244, 1, 5884, 'R'),
+(574681245, 'Shubh', 4, 2, '2018-07-18', '2018-07-01', '2018-07-02', '2018-07-18', 11, 'km', 244, 1, 5884, 'R'),
 (574681246, 'james', 6, 6, '2018-07-18', '2018-06-01', '2018-06-28', '2018-07-18', 15, 'km', 69, 27, 5035, 'R'),
 (574681247, 'antonio', 3, 1, '2018-07-18', '2018-07-19', '2018-07-22', '2018-07-20', 13, 'km', 421, 3, 5473, 'R'),
 (574681248, 'ethan', 1, 2, '2018-07-20', '2018-07-28', '2018-07-29', '2018-07-20', 10, 'km', 69, 1, 690, 'R'),
@@ -171,59 +171,44 @@ INSERT INTO `rentedcars` (`id`, `customer_username`, `car_id`, `driver_id`, `boo
 (574681258, 'lucas', 3, 1, '2021-03-24', '2021-03-24', '2021-03-25', '2021-03-24', 2600, 'days', NULL, 1, 2600, 'R'),
 (574681259, 'lucas', 14, 8, '2021-03-24', '2021-03-24', '2021-03-26', '2021-03-24', 6100, 'days', NULL, 2, 12200, 'R');
 
--- Indexes for dumped tables
 
--- Indexes for table `cars`
 ALTER TABLE `cars`
  ADD PRIMARY KEY (`car_id`), ADD UNIQUE KEY `car_nameplate` (`car_nameplate`);
 
--- Indexes for table `clientcars`
 ALTER TABLE `clientcars`
  ADD PRIMARY KEY (`car_id`), ADD KEY `client_username` (`client_username`);
 
--- Indexes for table `clients`
 ALTER TABLE `clients`
  ADD PRIMARY KEY (`client_username`);
 
--- Indexes for table `customers`
 ALTER TABLE `customers`
  ADD PRIMARY KEY (`customer_username`);
 
--- Indexes for table `driver`
 ALTER TABLE `driver`
  ADD PRIMARY KEY (`driver_id`), ADD UNIQUE KEY `dl_number` (`dl_number`), ADD KEY `client_username` (`client_username`);
 
--- Indexes for table `rentedcars`
 ALTER TABLE `rentedcars`
  ADD PRIMARY KEY (`id`), ADD KEY `customer_username` (`customer_username`), ADD KEY `car_id` (`car_id`), ADD KEY `driver_id` (`driver_id`);
 
--- AUTO_INCREMENT for dumped tables
 
--- AUTO_INCREMENT for table `cars`
 ALTER TABLE `cars`
 MODIFY `car_id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 
--- AUTO_INCREMENT for table `driver`
 ALTER TABLE `driver`
 MODIFY `driver_id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 
--- AUTO_INCREMENT for table `rentedcars`
 
 ALTER TABLE `rentedcars`
 MODIFY `id` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=574681260;
 
--- Constraints for dumped tables
 
--- Constraints for table `clientcars`
 ALTER TABLE `clientcars`
 ADD CONSTRAINT `clientcars_ibfk_1` FOREIGN KEY (`client_username`) REFERENCES `clients` (`client_username`),
 ADD CONSTRAINT `clientcars_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`car_id`);
 
--- Constraints for table `driver`
 ALTER TABLE `driver`
 ADD CONSTRAINT `driver_ibfk_1` FOREIGN KEY (`client_username`) REFERENCES `clients` (`client_username`);
 
--- Constraints for table `rentedcars`
 ALTER TABLE `rentedcars`
 ADD CONSTRAINT `rentedcars_ibfk_1` FOREIGN KEY (`customer_username`) REFERENCES `customers` (`customer_username`),
 ADD CONSTRAINT `rentedcars_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`car_id`),
